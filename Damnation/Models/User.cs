@@ -9,7 +9,7 @@ namespace Damnation.Models
     public class User
     {
         [Required]
-        public string email { get; set; }
+        public string Email { get; set; }
 
 
     }
