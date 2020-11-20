@@ -1,0 +1,8 @@
+#Ignore appsettings.json
+Damnation/appsettings.json
+
+#Ignore appsettings.Development.json
+Damnation/appsettings.Development.json
+
+appsettings.json
+appsettings.Development.json.env
