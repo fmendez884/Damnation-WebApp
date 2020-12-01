@@ -47,8 +47,10 @@ var Create = /** @class */ (function (_super) {
             };
             axios_1.default.post("api/items/create", itemObject).then(function (res) {
                 console.log(res);
-                debugger;
+                //debugger;
                 _this.state.history.push('/items');
+                _this.setState({ redirect: true });
+                console.log(_this.state);
             });
         };
         _this.onChange = _this.onChange.bind(_this);
@@ -56,13 +58,17 @@ var Create = /** @class */ (function (_super) {
         _this.state = {
             name: '',
             description: '',
-            history: []
+            history: [],
+            redirect: false
         };
         return _this;
     }
     Create.prototype.render = function () {
         var _this = this;
         if (this.state.history[0] === "/items") {
+            return React.createElement(react_router_1.Redirect, { to: "/items" });
+        }
+        if (this.state.redirect === true) {
             return React.createElement(react_router_1.Redirect, { to: "/items" });
         }
         else {

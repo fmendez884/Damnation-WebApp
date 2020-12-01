@@ -6,7 +6,8 @@ import { Redirect } from 'react-router';
 type ItemProps = {
     name: string,
     description: string,
-    history: Array<any>;
+    history: Array<any>,
+    redirect: boolean;
 
 }
 
@@ -25,7 +26,8 @@ export default class Create extends React.Component<{}, ItemProps> {
         this.state = {
             name: '',
             description: '',
-            history: []
+            history: [],
+            redirect: false
         }
 
         
@@ -59,9 +61,10 @@ export default class Create extends React.Component<{}, ItemProps> {
 
         axios.post("api/items/create", itemObject).then(res => {
             console.log(res);
-            debugger;
+            //debugger;
             this.state.history.push('/items');
-            
+            this.setState({ redirect: true })
+            console.log(this.state);
         })
 
     }
@@ -70,6 +73,9 @@ export default class Create extends React.Component<{}, ItemProps> {
     render() {
 
         if (this.state.history[0] === "/items") {
+            return <Redirect to="/items" />
+        }
+        if (this.state.redirect === true) {
             return <Redirect to="/items" />
         }
         else {
