@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\src\components\common\PrivateRoute.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\components\LoginPage.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\components\LogoutPage.tsx" />
   </ItemGroup>

@@ -6,28 +6,37 @@ import LoginPage from "../LoginPage";
 import FetchData from '../FetchData';
 
 const PrivateRoute = ({ component: Component, oidc, ...rest }: any) => {
-    //console.log(...rest);
+    //console.log("rest: ", ...rest);
     //console.log("oidc", oidc);
     //debugger;
     return (
-        <Route path='/fetch-data/:startDateIndex?' component={FetchData}
+        
+        < Route
+            {...rest}
+                render = { props => {
+                if (!oidc.user) {
+                    return <LoginPage />;
+                } else {
+                    return <Component {...props} />;
+                }
+            }}
         />
     );
 };
 
 PrivateRoute.propTypes = {
-    component: PropTypes.func.isRequired,
+    //component: PropTypes.func.isRequired,
     oidc: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state: any) {
-    console.log(state);
-    debugger;
+    //console.log(state);
+    //debugger;
     return {
         oidc: state.oidc
     };
 }
 
-//export default connect(mapStateToProps)(PrivateRoute);
+export default connect(mapStateToProps)(PrivateRoute);
 
-export default PrivateRoute;
+//export default PrivateRoute;

@@ -6,6 +6,7 @@ import Counter from './components/Counter';
 import FetchData from './components/FetchData';
 import Items from './components/Item/Items';
 import Create from './components/Item/Create';
+import PrivateRoute from './components/common/PrivateRoute';
 
 import './custom.css'
 
@@ -13,8 +14,11 @@ export default () => (
     <Layout>
         <Route exact path='/' component={Home} />
         <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
+        {//  <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
+        }
         <Route path='/items' component={Items} />
         <Route path='/create' component={Create} />
+        { <PrivateRoute path="/fetch-data/:startDateIndex?" component={FetchData} />
+        }
     </Layout>
 );
