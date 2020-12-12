@@ -233,3 +233,4 @@ _Pvt_Extensions
 
 appsettings.json
 appsettings.development.json
+secrets.json

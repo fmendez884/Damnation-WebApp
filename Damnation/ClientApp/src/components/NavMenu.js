@@ -16,11 +16,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var reactstrap_1 = require("reactstrap");
 var react_router_dom_1 = require("react-router-dom");
+var react_redux_1 = require("react-redux");
 require("./NavMenu.css");
 var NavMenu = /** @class */ (function (_super) {
     __extends(NavMenu, _super);
-    function NavMenu() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+    function NavMenu(props) {
+        var _this = _super.call(this, props) || this;
         _this.state = {
             isOpen: false
         };
@@ -30,13 +31,28 @@ var NavMenu = /** @class */ (function (_super) {
             });
         };
         return _this;
+        //debugger;
     }
+    //Navigation = (props: any) => {
+    //    const { oidc } = props;
+    //    const userLoggedIn = oidc.user;
+    //};
+    //oidc = this.props;
+    //userLoggedIn = this.props.oidc.user;
+    //oidc  = this.props;
+    //   const userLoggedIn = this.oidc.oidc.user;
     NavMenu.prototype.render = function () {
+        console.log(this.props.oidc);
         return (React.createElement("header", null,
             React.createElement(reactstrap_1.Navbar, { className: "navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3", light: true },
                 React.createElement(reactstrap_1.Container, null,
                     React.createElement(reactstrap_1.NavbarBrand, { tag: react_router_dom_1.Link, to: "/" }, "Damnation"),
                     React.createElement(reactstrap_1.NavbarToggler, { onClick: this.toggle, className: "mr-2" }),
+                    this.props.oidc.user ? (React.createElement(reactstrap_1.Collapse, { className: "justify-content-end" },
+                        React.createElement("div", null,
+                            "Signed in as:",
+                            " ",
+                            React.createElement("a", { href: "#login" }, this.props.oidc.user ? this.props.oidc.user.profile.unique_name : "")))) : null,
                     React.createElement(reactstrap_1.Collapse, { className: "d-sm-inline-flex flex-sm-row-reverse", isOpen: this.state.isOpen, navbar: true },
                         React.createElement("ul", { className: "navbar-nav flex-grow" },
                             React.createElement(reactstrap_1.NavItem, null,
@@ -48,9 +64,19 @@ var NavMenu = /** @class */ (function (_super) {
                             React.createElement(reactstrap_1.NavItem, null,
                                 React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/items" }, "Items")),
                             React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/create" }, "Create"))))))));
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/create" }, "Create")),
+                            !this.props.oidc.user ? (React.createElement(reactstrap_1.NavItem, null,
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/login" }, "Log In"))) : (React.createElement(reactstrap_1.NavItem, null,
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/logout" }, "Log Out")))))))));
     };
     return NavMenu;
-}(React.PureComponent));
-exports.default = NavMenu;
+}(React.Component));
+function mapStateToProps(state) {
+    return {
+        oidc: state.oidc
+    };
+}
+;
+exports.default = react_redux_1.connect(mapStateToProps)(NavMenu);
+//export default NavMenu;
 //# sourceMappingURL=NavMenu.js.map
