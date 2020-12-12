@@ -2,15 +2,16 @@
 import userManager from "../util/userManager";
 
 class LogoutPage extends React.Component {
-    componentDidMount() {
+
+    onLogoutButtonClick(event: any) {
+        event.preventDefault();
         userManager.signoutRedirect();
     }
 
     render() {
         return (
-            <div>
-                <h3>Log out</h3>
-            </div>
+                <button onClick={this.onLogoutButtonClick} > Logout </button>
+           
         );
     }
 }

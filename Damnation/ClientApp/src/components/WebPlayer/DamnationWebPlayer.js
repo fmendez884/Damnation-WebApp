@@ -21,7 +21,7 @@ var DamnationWebPlayer = /** @class */ (function (_super) {
         var _this = _super.call(this, props) || this;
         //unityContext: any;
         _this.unityContent = new react_unity_webgl_1.UnityContent("./Build/damnation-web.json", "./Build/UnityLoader.js", {
-            adjustOnWindowResize: false
+            adjustOnWindowResize: true
         });
         _this.webPlayerWidth = 1000;
         return _this;
@@ -38,7 +38,7 @@ var DamnationWebPlayer = /** @class */ (function (_super) {
     DamnationWebPlayer.prototype.render = function () {
         // Finally render the Unity component and pass 
         // the Unity content through the props.
-        return (React.createElement("div", { className: "WebPlayer", style: {} }, React.createElement(react_unity_webgl_1.default, { unityContent: this.unityContent })));
+        return (React.createElement("div", { className: "WebPlayer", style: { width: this.webPlayerWidth } }, React.createElement(react_unity_webgl_1.default, { unityContent: this.unityContent })));
     };
     return DamnationWebPlayer;
 }(React.Component));

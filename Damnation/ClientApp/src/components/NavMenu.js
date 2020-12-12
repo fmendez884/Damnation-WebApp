@@ -17,7 +17,8 @@ var React = require("react");
 var reactstrap_1 = require("reactstrap");
 var react_router_dom_1 = require("react-router-dom");
 var react_redux_1 = require("react-redux");
-require("./NavMenu.css");
+var LoginPage_1 = require("./LoginPage");
+var LogoutPage_1 = require("./LogoutPage");
 var NavMenu = /** @class */ (function (_super) {
     __extends(NavMenu, _super);
     function NavMenu(props) {
@@ -42,13 +43,13 @@ var NavMenu = /** @class */ (function (_super) {
     //oidc  = this.props;
     //   const userLoggedIn = this.oidc.oidc.user;
     NavMenu.prototype.render = function () {
-        console.log(this.props.oidc);
+        //console.log(this.props.oidc);
         return (React.createElement("header", null,
-            React.createElement(reactstrap_1.Navbar, { className: "navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3", light: true },
+            React.createElement(reactstrap_1.Navbar, { className: "navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 nes-container is-dark", light: true },
                 React.createElement(reactstrap_1.Container, null,
-                    React.createElement(reactstrap_1.NavbarBrand, { tag: react_router_dom_1.Link, to: "/" }, "Damnation"),
+                    React.createElement(reactstrap_1.NavbarBrand, { tag: react_router_dom_1.Link, to: "/", style: { color: "white" } }, "-Damnation-"),
                     React.createElement(reactstrap_1.NavbarToggler, { onClick: this.toggle, className: "mr-2" }),
-                    this.props.oidc.user ? (React.createElement(reactstrap_1.Collapse, { className: "justify-content-end" },
+                    this.props.oidc.user ? (React.createElement(reactstrap_1.Collapse, { className: "justify-content-center" },
                         React.createElement("div", null,
                             "Signed in as:",
                             " ",
@@ -56,18 +57,16 @@ var NavMenu = /** @class */ (function (_super) {
                     React.createElement(reactstrap_1.Collapse, { className: "d-sm-inline-flex flex-sm-row-reverse", isOpen: this.state.isOpen, navbar: true },
                         React.createElement("ul", { className: "navbar-nav flex-grow" },
                             React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/" }, "Home")),
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-light", to: "/" }, "Home")),
                             React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/counter" }, "Counter")),
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-light", to: "/counter" }, "Counter")),
                             React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/fetch-data" }, "Fetch data")),
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-light", to: "/fetch-data" }, "Fetch Data")),
                             React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/items" }, "Items")),
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-light", to: "/items" }, "Items")),
                             React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/create" }, "Create")),
-                            !this.props.oidc.user ? (React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/login" }, "Log In"))) : (React.createElement(reactstrap_1.NavItem, null,
-                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-dark", to: "/logout" }, "Log Out")))))))));
+                                React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.Link, className: "text-light", to: "/create" }, "Create")),
+                            !this.props.oidc.user ? (React.createElement(LoginPage_1.default, null)) : (React.createElement(LogoutPage_1.default, null))))))));
     };
     return NavMenu;
 }(React.Component));

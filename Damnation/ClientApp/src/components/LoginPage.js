@@ -27,7 +27,6 @@ var LoginPage = /** @class */ (function (_super) {
     };
     LoginPage.prototype.render = function () {
         return (React.createElement("div", null,
-            React.createElement("h3", null, "Login "),
             React.createElement("button", { onClick: this.onLoginButtonClick }, " Login ")));
     };
     return LoginPage;

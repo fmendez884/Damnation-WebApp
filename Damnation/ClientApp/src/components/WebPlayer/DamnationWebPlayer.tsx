@@ -10,7 +10,7 @@ export default class DamnationWebPlayer extends React.Component {
     "./Build/damnation-web.json",
     "./Build/UnityLoader.js",
     {
-      adjustOnWindowResize: false
+      adjustOnWindowResize: true
     
     }
   );
@@ -44,7 +44,7 @@ export default class DamnationWebPlayer extends React.Component {
 
     return (
     
-        <div className="WebPlayer" style={{ }}>
+        <div className="WebPlayer" style={{ width: this.webPlayerWidth }}>
             { <Unity unityContent={this.unityContent}/>
             }
         </div> 
