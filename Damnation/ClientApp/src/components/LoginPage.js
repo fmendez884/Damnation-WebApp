@@ -26,8 +26,7 @@ var LoginPage = /** @class */ (function (_super) {
         userManager_1.default.signinRedirect();
     };
     LoginPage.prototype.render = function () {
-        return (React.createElement("div", null,
-            React.createElement("button", { onClick: this.onLoginButtonClick }, " Login ")));
+        return (React.createElement("button", { onClick: this.onLoginButtonClick, className: "nav-item" }, " Log In "));
     };
     return LoginPage;
 }(react_1.Component));

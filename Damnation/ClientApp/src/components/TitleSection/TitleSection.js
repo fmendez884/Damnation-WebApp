@@ -14,20 +14,20 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var userManager_1 = require("../util/userManager");
-var LogoutPage = /** @class */ (function (_super) {
-    __extends(LogoutPage, _super);
-    function LogoutPage() {
+var UserGreeting_1 = require("./UserGreeting");
+var TitleSection = /** @class */ (function (_super) {
+    __extends(TitleSection, _super);
+    function TitleSection() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    LogoutPage.prototype.onLogoutButtonClick = function (event) {
-        event.preventDefault();
-        userManager_1.default.signoutRedirect();
+    TitleSection.prototype.render = function () {
+        return (React.createElement("div", { className: "title-section container" },
+            React.createElement("h1", { className: "title box" }, "-DAMNATION-"),
+            React.createElement("div", { className: "nested-item-container" },
+                React.createElement(UserGreeting_1.default, null))));
     };
-    LogoutPage.prototype.render = function () {
-        return (React.createElement("button", { onClick: this.onLogoutButtonClick }, " Log Out "));
-    };
-    return LogoutPage;
+    ;
+    return TitleSection;
 }(React.Component));
-exports.default = LogoutPage;
-//# sourceMappingURL=LogoutPage.js.map
+exports.default = TitleSection;
+//# sourceMappingURL=TitleSection.js.map

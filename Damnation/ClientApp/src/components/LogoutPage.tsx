@@ -10,7 +10,7 @@ class LogoutPage extends React.Component {
 
     render() {
         return (
-                <button onClick={this.onLogoutButtonClick} > Logout </button>
+                <button onClick={this.onLogoutButtonClick} > Log Out </button>
            
         );
     }

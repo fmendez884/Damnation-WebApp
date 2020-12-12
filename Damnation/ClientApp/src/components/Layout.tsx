@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
 import NavMenu from './NavMenu';
+import TitleSection from './TitleSection/TitleSection';
 
 export default (props: { children?: React.ReactNode }) => (
     <React.Fragment>
-        <h1 className="title">-DAMNATION-</h1>
+        <TitleSection/>
         <NavMenu/>
         <Container>
             {props.children}

@@ -11,11 +11,6 @@ type oidc = {
     user: any;
 }
 
-//type user = {
-//    email: any;
-//    profile: any;
-//}
-
 type State = {
     isOpen: boolean;
 }
@@ -28,29 +23,16 @@ class NavMenu extends React.Component<{oidc: oidc}, { isOpen: boolean }>{
    
     constructor(props: any) {
         super(props);
-        //debugger;
     }
 
     public state = {
         isOpen: false
     };
 
-    //Navigation = (props: any) => {
-    //    const { oidc } = props;
-    //    const userLoggedIn = oidc.user;
-    //};
-
-    //oidc = this.props;
-    //userLoggedIn = this.props.oidc.user;
-
-     //oidc  = this.props;
-     //   const userLoggedIn = this.oidc.oidc.user;
-
     public render() {
-        //console.log(this.props.oidc);
         return (
             <header>
-                    <Navbar className="navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 nes-container is-dark" light>
+                    <Navbar className="navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 nes-container is-dark is-rounded" light>
                         <Container>
                             <NavbarBrand tag={Link} to="/" style={{ color: "white" }}>-Damnation-</NavbarBrand>
                             <NavbarToggler onClick={this.toggle} className="mr-2"/>
@@ -110,5 +92,4 @@ function mapStateToProps(state: any) {
 };
 
 export default connect(mapStateToProps)(NavMenu);
-//export default NavMenu;
 

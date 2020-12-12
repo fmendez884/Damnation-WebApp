@@ -10,7 +10,7 @@ class LoginPage extends Component {
 
     render() {
         return (
-                <button onClick = { this.onLoginButtonClick } > Login </button>
+                <button onClick = { this.onLoginButtonClick } className="nav-item"> Log In </button>
          
          );
     }

@@ -32,20 +32,10 @@ var NavMenu = /** @class */ (function (_super) {
             });
         };
         return _this;
-        //debugger;
     }
-    //Navigation = (props: any) => {
-    //    const { oidc } = props;
-    //    const userLoggedIn = oidc.user;
-    //};
-    //oidc = this.props;
-    //userLoggedIn = this.props.oidc.user;
-    //oidc  = this.props;
-    //   const userLoggedIn = this.oidc.oidc.user;
     NavMenu.prototype.render = function () {
-        //console.log(this.props.oidc);
         return (React.createElement("header", null,
-            React.createElement(reactstrap_1.Navbar, { className: "navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 nes-container is-dark", light: true },
+            React.createElement(reactstrap_1.Navbar, { className: "navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 nes-container is-dark is-rounded", light: true },
                 React.createElement(reactstrap_1.Container, null,
                     React.createElement(reactstrap_1.NavbarBrand, { tag: react_router_dom_1.Link, to: "/", style: { color: "white" } }, "-Damnation-"),
                     React.createElement(reactstrap_1.NavbarToggler, { onClick: this.toggle, className: "mr-2" }),
@@ -77,5 +67,4 @@ function mapStateToProps(state) {
 }
 ;
 exports.default = react_redux_1.connect(mapStateToProps)(NavMenu);
-//export default NavMenu;
 //# sourceMappingURL=NavMenu.js.map

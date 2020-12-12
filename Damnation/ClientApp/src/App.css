@@ -9,10 +9,30 @@
     justify-content: center;
 }
 
-.title {
-    color: white;
+.title-section {
+    display: flex;
+    justify-content: space-between;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    display: flex;
+    color: white;
     padding-top: 20px;
+}
+
+.nested-item-container {
+    display:flex;
+}
+
+.user-greeting {
+    display: flex;
+    font-size: xx-small;
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin-left: auto;
 }
 
 .navBar-container {
@@ -22,7 +42,7 @@
 .GameSection {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     padding-top: 20px;
 }
@@ -44,3 +64,31 @@
     height: 150px;
     width: 150px;
 }
+
+/*.container {
+    display: flex;
+}
+
+.box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+    .box:first-child > span {
+        margin-right: auto;
+    }
+
+    .box:last-child > span {
+        margin-left: auto;
+    }*/
+
+/* non-essential */
+/*.box {
+    align-items: center;
+}
+
+p {
+    text-align: center;
+    margin: 5px 0 0 0;
+}*/
