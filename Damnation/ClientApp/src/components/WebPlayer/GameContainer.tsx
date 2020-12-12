@@ -6,12 +6,14 @@ import DamnationWebPlayer from "./DamnationWebPlayer";
 import GobletFire from "./GobletFire";
 
 
-export default class GameContainer extends React.Component {
+class GameContainer extends React.Component {
     render() {
         return (
-            <div className="GameContainer nes-container is-dark">
+            <div className="GameContainer nes-container is-dark is-rounded">
                 <DamnationWebPlayer></DamnationWebPlayer>
             </div>
         );
     }
 }
+
+export default GameContainer;

@@ -10,21 +10,22 @@ import PrivateRoute from './components/common/PrivateRoute';
 import LoginPage from './components/LoginPage';
 import LogoutPage from './components/LogoutPage';
 import CallbackPage from './components/CallbackPage';
-
-import './custom.css'
+import './App.css';
 
 export default () => (
-    <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        {//  <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
-        }
-        <Route path='/items' component={Items} />
-        <Route path='/create' component={Create} />
-        { <PrivateRoute path="/fetch-data/:startDateIndex?" component={FetchData} />
-        }
-        <Route path="/login" component={LoginPage} />
-        <Route path="/logout" component={LogoutPage} />
-        <Route path="/callback" component={CallbackPage} />
-    </Layout>
+    <div className="App">
+        <Layout>
+            <Route exact path='/' component={Home} />
+            <Route path='/counter' component={Counter} />
+            {//  <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
+            }
+            <Route path='/items' component={Items} />
+            <Route path='/create' component={Create} />
+            { <PrivateRoute path="/fetch-data/:startDateIndex?" component={FetchData} />
+            }
+            <Route path="/login" component={LoginPage} />
+            <Route path="/logout" component={LogoutPage} />
+            <Route path="/callback" component={CallbackPage} />
+        </Layout>
+    </div>
 );

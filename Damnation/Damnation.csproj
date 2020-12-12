@@ -28,6 +28,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\TitleSection\TitleSection.tsx" />
+    <None Remove="ClientApp\src\components\UserGreeting.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <TypeScriptCompile Remove="ClientApp\src\components\common\PrivateRoute.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\components\LoginPage.tsx" />
     <TypeScriptCompile Remove="ClientApp\src\components\LogoutPage.tsx" />

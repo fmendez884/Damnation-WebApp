@@ -1,8 +1,4 @@
-import React from "react";
-import ReactDom from "react-dom"
-import { connect } from "react-redux";
-
-import DamnationWebPlayer from "./DamnationWebPlayer";
+import * as React from "react";
 import GobletFire from "./GobletFire";
 import GameContainer from "./GameContainer";
 
@@ -13,7 +9,6 @@ export default class GameSection extends React.Component {
             <div className="GameSection">
                 <GobletFire></GobletFire>
                 <GameContainer></GameContainer>
-                {/* <DamnationWebPlayer></DamnationWebPlayer> */}
                 <GobletFire></GobletFire>
             </div>
         );
