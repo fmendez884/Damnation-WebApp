@@ -82,6 +82,15 @@ class NavMenu extends React.Component<{oidc: oidc}, { isOpen: boolean }>{
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/create">Create</NavLink>
                                 </NavItem>
+                                {!this.props.oidc.user ? (
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-dark" to="/login">Log In</NavLink>
+                                    </NavItem>
+                                 ) : (
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-dark" to="/logout">Log Out</NavLink>
+                                    </NavItem>
+                                 )}
                             </ul>
                         </Collapse>
                     </Container>

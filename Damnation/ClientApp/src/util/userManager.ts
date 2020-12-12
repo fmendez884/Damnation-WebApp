@@ -1,8 +1,9 @@
 ﻿import { createUserManager } from "redux-oidc";
+import secrets from '../../secrets.json';
 
-const clientId = ""; //GUID Client Application ID
-const tenantId = ""; //GUID Azure Tenant ID
-const resourceId = ""; //GUID API Application ID
+const clientId = secrets.clientId; //GUID Client Application ID
+const tenantId = secrets.tenantId; //GUID Azure Tenant ID
+const resourceId = secrets.resourceId; //GUID API Application ID
 
 const userManagerConfig = {
   authority: `https://login.microsoftonline.com/${tenantId}/.well-known/openid-configuration`,
@@ -17,8 +18,7 @@ const userManagerConfig = {
   extraQueryParams: {
     resource: resourceId
   },
-  signingKeys: [
-  ]
+    signingKeys: secrets.signingKeys
 };
 
 const userManager = createUserManager(userManagerConfig);

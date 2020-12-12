@@ -17,7 +17,7 @@ const PrivateRoute = ({ component: Component, oidc, ...rest }: any) => {
                 if (!oidc.user) {
                     return <LoginPage />;
                 } else {
-                    return <Component {...props} />;
+                    return <Component {...props} />; 
                 }
             }}
         />
