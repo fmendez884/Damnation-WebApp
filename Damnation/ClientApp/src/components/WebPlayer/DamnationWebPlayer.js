@@ -20,7 +20,7 @@ var DamnationWebPlayer = /** @class */ (function (_super) {
     function DamnationWebPlayer(props) {
         var _this = _super.call(this, props) || this;
         //unityContext: any;
-        _this.unityContent = new react_unity_webgl_1.UnityContent("./Build/damnation-web.json", "./Build/UnityLoader.js", {
+        _this.unityContent = new react_unity_webgl_1.UnityContent("./Build/damnation-rpg-webgl-build.json", "./Build/UnityLoader.js", {
             adjustOnWindowResize: true
         });
         _this.webPlayerWidth = 1000;

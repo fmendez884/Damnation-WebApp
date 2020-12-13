@@ -1,13 +1,11 @@
 import * as React from "react";
 import Unity, { UnityContent } from "react-unity-webgl";
 
-import GobletFire from "./GobletFire";
-
 export default class DamnationWebPlayer extends React.Component {
   //unityContext: any;
   
   unityContent = new UnityContent(
-    "./Build/damnation-web.json",
+    "./Build/damnation-rpg-webgl-build.json",
     "./Build/UnityLoader.js",
     {
       adjustOnWindowResize: true
