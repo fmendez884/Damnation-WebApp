@@ -23,6 +23,7 @@ class NavMenu extends React.Component<{oidc: oidc}, { isOpen: boolean }>{
    
     constructor(props: any) {
         super(props);
+
     }
 
     public state = {

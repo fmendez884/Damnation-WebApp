@@ -1,13 +1,24 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import Unity, { UnityContent } from "react-unity-webgl";
 
-import GobletFire from "./GobletFire";
+type oidc = {
+    isLoadingUser?: any;
+    user: any;
+}
 
-export default class DamnationWebPlayer extends React.Component {
-  //unityContext: any;
+interface Props {
+    oidc: oidc;
+}
+
+interface State {
+    userDisplayLoaded: boolean;
+}
+
+class DamnationWebPlayer extends React.Component<{ oidc: oidc }, { userDisplayLoaded: boolean }> {
   
   unityContent = new UnityContent(
-    "./Build/damnation-web.json",
+    "./Build/damnation-rpg-webgl-build.json",
     "./Build/UnityLoader.js",
     {
       adjustOnWindowResize: true
@@ -21,43 +32,61 @@ export default class DamnationWebPlayer extends React.Component {
   
   constructor(props: any) {
     super(props);
-    
+      this.sendOidc = this.sendOidc.bind(this);
+      console.log(this);
+    }
 
-    // Next up create a new Unity Content object to 
-    // initialise and define your WebGL build. The 
-    // paths are relative from your index file.
+    public state = {
+        userDisplayLoaded: false
+    };
 
-      //this.unityContext = new UnityContent({
-      //    loaderUrl: "./Build/UnityLoader.js",
-      //    dataUrl: "build/damnation-web.data",
-      //    frameworkUrl: "build/damnation-web.wasm.framework.js",
-      //    codeUrl: "build/damnation-web.wasm"
-      //});
+    public sendOidc(e: any) {
 
+        var oidc = JSON.constructor(this.props.oidc)
+        var user = JSON.constructor(oidc.user)
+        oidc.user = user
+        var profile = JSON.constructor(oidc.user.profile)
+        oidc.user.profile = profile
 
-  }
+        this.unityContent.send(
+            "UserNameDisplay",
+            "ReceiveOidc",
+            JSON.stringify(oidc)
+        );
+
+    }
+
+    componentDidMount() {
+        window.addEventListener('userDisplayLoaded', this.sendOidc);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('userDisplayLoaded', this.sendOidc);
+    }
+
 
   render() {
 
     // Finally render the Unity component and pass 
     // the Unity content through the props.
 
+      
+
     return (
     
         <div className="WebPlayer" style={{ width: this.webPlayerWidth }}>
-            { <Unity unityContent={this.unityContent}/>
-            }
+            { <Unity unityContent={this.unityContent} />}
         </div> 
       
     );
   }
   
-    // render() {
-      
-    //     return (
-            
-    //       <div id="unityContainer" style={{width: 960, height: 600}}></div>
-          
-    //     );
-    // }
 }
+
+function mapStateToProps(state: any) {
+    return {
+        oidc: state.oidc
+    };
+};
+
+export default connect(mapStateToProps)(DamnationWebPlayer);

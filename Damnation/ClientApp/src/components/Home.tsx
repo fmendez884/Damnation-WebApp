@@ -6,8 +6,6 @@ const Home = () => (
             <GameSection></GameSection>
       
 
-
-
 );
 
 export default connect()(Home);
