@@ -35,7 +35,7 @@ class NavMenu extends React.Component<{oidc: oidc}, { isOpen: boolean }>{
             <header>
                     <Navbar className="navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 nes-container is-dark is-rounded" light>
                         <Container>
-                            <NavbarBrand tag={Link} to="/" style={{ color: "white" }}>-Damnation-</NavbarBrand>
+                            <NavbarBrand tag={Link} to="/" style={{ color: "white" }}>Damnation</NavbarBrand>
                             <NavbarToggler onClick={this.toggle} className="mr-2"/>
 
                             {this.props.oidc.user ? (
