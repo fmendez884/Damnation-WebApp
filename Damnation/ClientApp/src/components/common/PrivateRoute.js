@@ -29,9 +29,6 @@ var react_redux_1 = require("react-redux");
 var LoginPage_1 = require("../LoginPage");
 var PrivateRoute = function (_a) {
     var Component = _a.component, oidc = _a.oidc, rest = __rest(_a, ["component", "oidc"]);
-    //console.log("rest: ", ...rest);
-    //console.log("oidc", oidc);
-    //debugger;
     return (React.createElement(react_router_dom_1.Route, __assign({}, rest, { render: function (props) {
             if (!oidc.user) {
                 return React.createElement(LoginPage_1.default, null);
@@ -42,16 +39,12 @@ var PrivateRoute = function (_a) {
         } })));
 };
 PrivateRoute.propTypes = {
-    //component: PropTypes.func.isRequired,
     oidc: PropTypes.object.isRequired
 };
 function mapStateToProps(state) {
-    //console.log(state);
-    //debugger;
     return {
         oidc: state.oidc
     };
 }
 exports.default = react_redux_1.connect(mapStateToProps)(PrivateRoute);
-//export default PrivateRoute;
 //# sourceMappingURL=PrivateRoute.js.map

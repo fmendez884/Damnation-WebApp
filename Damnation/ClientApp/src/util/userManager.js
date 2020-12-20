@@ -8,7 +8,7 @@ var tenantId = secrets.tenantId; //GUID Azure Tenant ID
 var resourceId = secrets.resourceId; //GUID API Application ID
 var signingKeys = secrets.signingKeys;
 var userManagerConfig = {
-    authority: "https://login.microsoftonline.com/" + tenantId + "/.well-known/openid-configuration",
+    authority: "https://login.microsoftonline.com/common",
     client_id: clientId,
     redirect_uri: window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "") + "/callback",
     post_logout_redirect_uri: window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : ""),

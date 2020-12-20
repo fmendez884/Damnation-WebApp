@@ -4,9 +4,9 @@ var SecretSetting = /** @class */ (function () {
     function SecretSetting() {
     }
     SecretSetting.secrets = {
-        "clientId": "ed764e08-b447-4b6d-9323-4f47be83bd90",
+        "clientId": "04e15200-5ae2-4c85-9280-c9cde4ba81c1",
         "tenantId": "5cd03ca2-c2fe-45c5-805a-ef1c2aedeeb2",
-        "resourceId": "8c3fe440-9385-4b88-bc81-e1d78e34bc29",
+        "resourceId": "3e8a8240-6a67-4c6e-ad06-e45a371e42b6",
         "signingKeys": [
             {
                 "kty": "RSA",

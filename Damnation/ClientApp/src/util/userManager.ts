@@ -9,7 +9,7 @@ const resourceId = secrets.resourceId; //GUID API Application ID
 const signingKeys = secrets.signingKeys;
 
 const userManagerConfig = {
-  authority: `https://login.microsoftonline.com/${tenantId}/.well-known/openid-configuration`,
+    authority: `https://login.microsoftonline.com/common`,
   client_id: clientId,
   redirect_uri: `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : "" }/callback`,
   post_logout_redirect_uri: `${window.location.protocol}//${ window.location.hostname }${window.location.port ? `:${window.location.port}` : ""}`,
