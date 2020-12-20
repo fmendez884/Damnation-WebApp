@@ -62,7 +62,7 @@ namespace Damnation
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-                Path.Combine(Directory.GetCurrentDirectory(), "ClientApp", "public", "Build")),
+                Path.Combine(Directory.GetCurrentDirectory(), "ClientApp", "build", "Build")),
                 RequestPath = "/Build",
                 ContentTypeProvider = provider
             });

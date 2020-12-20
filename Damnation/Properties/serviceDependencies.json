@@ -3,10 +3,6 @@
     "cosmosdb1": {
       "type": "cosmosdb",
       "connectionId": "damnation"
-    },
-    "secrets1": {
-      "type": "secrets",
-      "connectionId": "VaultUri"
     }
   }
 }
