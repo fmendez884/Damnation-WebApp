@@ -21,4 +21,5 @@ yarn-debug.log*
 yarn-error.log*
 
 src/Config.ts
+src/secretSettings.tsx
 secrets.json
