@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Threading.Tasks;
 using AspNetCore.RouteAnalyzer; // Add
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace Damnation
 {
@@ -52,7 +55,19 @@ namespace Damnation
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+
+            var provider = new FileExtensionContentTypeProvider();
+            provider.Mappings[".unityweb"] = "application/octet-stream";
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), "ClientApp", "public", "Build")),
+                RequestPath = "/Build",
+                ContentTypeProvider = provider
+            });
+
+
             app.UseSpaStaticFiles();
 
             app.UseRouting();
