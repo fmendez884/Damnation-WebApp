@@ -1,5 +1,4 @@
 import * as React from "react";
-import { connect } from "react-redux";
 import Unity, { UnityContent } from "react-unity-webgl";
 
 type oidc = {
@@ -15,7 +14,7 @@ interface State {
     userDisplayLoaded: boolean;
 }
 
-class DamnationWebPlayer extends React.Component<{ oidc: oidc }, { userDisplayLoaded: boolean }> {
+class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: boolean }> {
   
   unityContent = new UnityContent(
     "./Build/damnation-rpg-webgl-build.json",
@@ -32,45 +31,49 @@ class DamnationWebPlayer extends React.Component<{ oidc: oidc }, { userDisplayLo
   
   constructor(props: any) {
     super(props);
-      this.sendOidc = this.sendOidc.bind(this);
-      console.log(this);
+      this.sendUserData = this.sendUserData.bind(this);
+      this.handleEvent = this.handleEvent.bind(this);
+     
     }
 
     public state = {
         userDisplayLoaded: false
     };
 
-    public sendOidc(e: any) {
-
-        var oidc = JSON.constructor(this.props.oidc)
-        var user = JSON.constructor(oidc.user)
-        oidc.user = user
-        var profile = JSON.constructor(oidc.user.profile)
-        oidc.user.profile = profile
-
+    public sendUserData() {
+        var user = JSON.constructor(this.props.user)
+       
         this.unityContent.send(
             "UserNameDisplay",
-            "ReceiveOidc",
-            JSON.stringify(oidc)
+            "ReceiveUserData",
+            JSON.stringify(user)
         );
 
     }
 
+    public handleEvent(e: any) {
+        this.setState({ userDisplayLoaded: true });
+    };
+
+    componentDidUpdate(props: any) {
+        if (this.props.isAuthenticated === true && this.state.userDisplayLoaded) {
+         
+            this.sendUserData();
+        }
+
+
+    }
+
     componentDidMount() {
-        window.addEventListener('userDisplayLoaded', this.sendOidc);
+        window.addEventListener('userDisplayLoaded', this.handleEvent);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('userDisplayLoaded', this.sendOidc);
+        window.removeEventListener('userDisplayLoaded', this.handleEvent);
     }
 
 
   render() {
-
-    // Finally render the Unity component and pass 
-    // the Unity content through the props.
-
-      
 
     return (
     
@@ -89,4 +92,4 @@ function mapStateToProps(state: any) {
     };
 };
 
-export default connect(mapStateToProps)(DamnationWebPlayer);
+export default (DamnationWebPlayer);

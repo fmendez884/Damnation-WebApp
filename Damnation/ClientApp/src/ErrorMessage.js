@@ -14,20 +14,23 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var UserGreeting_1 = require("./UserGreeting");
-var TitleSection = /** @class */ (function (_super) {
-    __extends(TitleSection, _super);
-    function TitleSection() {
+var reactstrap_1 = require("reactstrap");
+var ErrorMessage = /** @class */ (function (_super) {
+    __extends(ErrorMessage, _super);
+    function ErrorMessage() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    TitleSection.prototype.render = function () {
-        return (React.createElement("div", { className: "title-section container" },
-            React.createElement("h1", { className: "title box" }, "-DAMNATION-"),
-            React.createElement("div", { className: "nested-item-container" },
-                React.createElement(UserGreeting_1.default, null))));
+    ErrorMessage.prototype.render = function () {
+        var debug = null;
+        if (this.props.debug) {
+            debug = React.createElement("pre", { className: "alert-pre border bg-light p-2" },
+                React.createElement("code", null, this.props.debug));
+        }
+        return (React.createElement(reactstrap_1.Alert, { color: "danger" },
+            React.createElement("p", { className: "mb-3" }, this.props.message),
+            debug));
     };
-    ;
-    return TitleSection;
+    return ErrorMessage;
 }(React.Component));
-exports.default = TitleSection;
-//# sourceMappingURL=TitleSection.js.map
+exports.default = ErrorMessage;
+//# sourceMappingURL=ErrorMessage.js.map

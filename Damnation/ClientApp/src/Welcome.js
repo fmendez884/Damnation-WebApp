@@ -25,17 +25,32 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var DamnationWebPlayer_1 = require("./DamnationWebPlayer");
-var GameContainer = /** @class */ (function (_super) {
-    __extends(GameContainer, _super);
-    function GameContainer() {
+var reactstrap_1 = require("reactstrap");
+require("@fortawesome/fontawesome-free/css/all.css");
+var GameSection_1 = require("./components/WebPlayer/GameSection");
+function WelcomeContent(props) {
+    // If authenticated, greet the user
+    if (props.isAuthenticated) {
+        return (React.createElement("div", null,
+            React.createElement("h4", null,
+                "Welcome ",
+                props.user.displayName,
+                "!")));
+    }
+    // Not authenticated, present a sign in button
+    return React.createElement("div", null);
+}
+var Welcome = /** @class */ (function (_super) {
+    __extends(Welcome, _super);
+    function Welcome() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    GameContainer.prototype.render = function () {
-        return (React.createElement("div", { className: "GameContainer nes-container is-dark is-rounded" },
-            React.createElement(DamnationWebPlayer_1.default, __assign({}, this.props))));
+    Welcome.prototype.render = function () {
+        return (React.createElement(reactstrap_1.Jumbotron, { style: { background: "black" } },
+            React.createElement(WelcomeContent, { isAuthenticated: this.props.isAuthenticated, user: this.props.user, authButtonMethod: this.props.authButtonMethod }),
+            React.createElement(GameSection_1.default, __assign({}, this.props))));
     };
-    return GameContainer;
+    return Welcome;
 }(React.Component));
-exports.default = GameContainer;
-//# sourceMappingURL=GameContainer.js.map
+exports.default = Welcome;
+//# sourceMappingURL=Welcome.js.map

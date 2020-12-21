@@ -1,31 +1,44 @@
 import * as React from 'react';
-import { Route } from 'react-router';
-import Layout from './components/Layout';
-import Home from './components/Home';
-import Counter from './components/Counter';
-import FetchData from './components/FetchData';
-import Items from './components/Item/Items';
-import Create from './components/Item/Create';
-import PrivateRoute from './components/common/PrivateRoute';
-import LoginPage from './components/LoginPage';
-import LogoutPage from './components/LogoutPage';
-import CallbackPage from './components/CallbackPage';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { Container } from 'reactstrap';
+import withAuthProvider, { AuthComponentProps } from './AuthProvider';
+import NavBar from './NavBar';
+import ErrorMessage from './ErrorMessage';
+import Welcome from './Welcome';
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-export default () => (
-    <div className="App">
-        <Layout>
-            <Route exact path='/' component={Home} />
-            <Route path='/counter' component={Counter} />
-            {//  <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
-            }
-            <Route path='/items' component={Items} />
-            <Route path='/create' component={Create} />
-            { <PrivateRoute path="/fetch-data/:startDateIndex?" component={FetchData} />
-            }
-            <Route path="/login" component={LoginPage} />
-            <Route path="/logout" component={LogoutPage} />
-            <Route path="/callback" component={CallbackPage} />
-        </Layout>
-    </div>
-);
+class App extends React.Component<AuthComponentProps> {
+  render() {
+    let error = null;
+    if (this.props.error) {
+      error = <ErrorMessage
+        message={this.props.error.message}
+        debug={this.props.error.debug} />;
+    }
+
+      return (
+      <Router>
+        <div>
+          <NavBar
+            isAuthenticated={this.props.isAuthenticated}
+            authButtonMethod={this.props.isAuthenticated ? this.props.logout : this.props.login}
+            user={this.props.user} />
+          <Container>
+            {error}
+            <Route exact path="/"
+              render={(props) =>
+                <Welcome {...props}
+                  isAuthenticated={this.props.isAuthenticated}
+                  user={this.props.user}
+                  authButtonMethod={this.props.login} />
+              } />
+            
+          </Container>
+        </div>
+      </Router>
+    );
+  }
+}
+
+export default withAuthProvider(App);

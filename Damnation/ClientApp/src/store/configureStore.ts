@@ -4,7 +4,6 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { History } from 'history';
 import { ApplicationState, reducers } from './';
 import { loadUser, reducer as oidcReducer } from "redux-oidc";
-import userManager from "../util/userManager";
 
 export default function configureStore(history: History, initialState?: ApplicationState) {
 
@@ -30,7 +29,6 @@ export default function configureStore(history: History, initialState?: Applicat
         initialState,
         compose(applyMiddleware(...middleware), ...enhancers)
     );
-    loadUser(store, userManager);
 
     return store;
 };

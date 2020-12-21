@@ -1,6 +1,5 @@
 import * as React from "react";
-import * as ReactDom from "react-dom"
-import { connect } from "react-redux";
+import * as ReactDom from "react-dom";
 
 import gobletFire from "../images/goblet-fire.gif";
 

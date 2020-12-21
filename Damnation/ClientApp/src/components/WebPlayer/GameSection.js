@@ -12,6 +12,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var GobletFire_1 = require("./GobletFire");
@@ -24,7 +35,7 @@ var GameSection = /** @class */ (function (_super) {
     GameSection.prototype.render = function () {
         return (React.createElement("div", { className: "GameSection" },
             React.createElement(GobletFire_1.default, null),
-            React.createElement(GameContainer_1.default, null),
+            React.createElement(GameContainer_1.default, __assign({}, this.props)),
             React.createElement(GobletFire_1.default, null)));
     };
     return GameSection;

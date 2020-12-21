@@ -14,13 +14,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var react_redux_1 = require("react-redux");
 var react_unity_webgl_1 = require("react-unity-webgl");
 var DamnationWebPlayer = /** @class */ (function (_super) {
     __extends(DamnationWebPlayer, _super);
     function DamnationWebPlayer(props) {
         var _this = _super.call(this, props) || this;
-        //unityContext: any;
         _this.unityContent = new react_unity_webgl_1.UnityContent("./Build/damnation-rpg-webgl-build.json", "./Build/UnityLoader.js", {
             adjustOnWindowResize: true
         });
@@ -28,27 +26,30 @@ var DamnationWebPlayer = /** @class */ (function (_super) {
         _this.state = {
             userDisplayLoaded: false
         };
-        _this.sendOidc = _this.sendOidc.bind(_this);
-        console.log(_this);
+        _this.sendUserData = _this.sendUserData.bind(_this);
+        _this.handleEvent = _this.handleEvent.bind(_this);
         return _this;
     }
-    DamnationWebPlayer.prototype.sendOidc = function (e) {
-        var oidc = JSON.constructor(this.props.oidc);
-        var user = JSON.constructor(oidc.user);
-        oidc.user = user;
-        var profile = JSON.constructor(oidc.user.profile);
-        oidc.user.profile = profile;
-        this.unityContent.send("UserNameDisplay", "ReceiveOidc", JSON.stringify(oidc));
+    DamnationWebPlayer.prototype.sendUserData = function () {
+        var user = JSON.constructor(this.props.user);
+        this.unityContent.send("UserNameDisplay", "ReceiveUserData", JSON.stringify(user));
+    };
+    DamnationWebPlayer.prototype.handleEvent = function (e) {
+        this.setState({ userDisplayLoaded: true });
+    };
+    ;
+    DamnationWebPlayer.prototype.componentDidUpdate = function (props) {
+        if (this.props.isAuthenticated === true && this.state.userDisplayLoaded) {
+            this.sendUserData();
+        }
     };
     DamnationWebPlayer.prototype.componentDidMount = function () {
-        window.addEventListener('userDisplayLoaded', this.sendOidc);
+        window.addEventListener('userDisplayLoaded', this.handleEvent);
     };
     DamnationWebPlayer.prototype.componentWillUnmount = function () {
-        window.removeEventListener('userDisplayLoaded', this.sendOidc);
+        window.removeEventListener('userDisplayLoaded', this.handleEvent);
     };
     DamnationWebPlayer.prototype.render = function () {
-        // Finally render the Unity component and pass 
-        // the Unity content through the props.
         return (React.createElement("div", { className: "WebPlayer", style: { width: this.webPlayerWidth } }, React.createElement(react_unity_webgl_1.default, { unityContent: this.unityContent })));
     };
     return DamnationWebPlayer;
@@ -59,5 +60,5 @@ function mapStateToProps(state) {
     };
 }
 ;
-exports.default = react_redux_1.connect(mapStateToProps)(DamnationWebPlayer);
+exports.default = (DamnationWebPlayer);
 //# sourceMappingURL=DamnationWebPlayer.js.map

@@ -23,7 +23,6 @@ var redux_thunk_1 = require("redux-thunk");
 var connected_react_router_1 = require("connected-react-router");
 var _1 = require("./");
 var redux_oidc_1 = require("redux-oidc");
-var userManager_1 = require("../util/userManager");
 function configureStore(history, initialState) {
     var middleware = [
         redux_thunk_1.default,
@@ -36,7 +35,6 @@ function configureStore(history, initialState) {
         enhancers.push(windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__());
     }
     var store = redux_1.createStore(rootReducer, initialState, redux_1.compose.apply(void 0, __spreadArrays([redux_1.applyMiddleware.apply(void 0, middleware)], enhancers)));
-    redux_oidc_1.loadUser(store, userManager_1.default);
     return store;
 }
 exports.default = configureStore;
