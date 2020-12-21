@@ -32,15 +32,15 @@ class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: bool
   
   constructor(props: any) {
     super(props);
-      this.sendOidc = this.sendOidc.bind(this);
-      console.log(this);
+      this.sendUserData = this.sendUserData.bind(this);
+      //console.log(this);
     }
 
     public state = {
         userDisplayLoaded: false
     };
 
-    public sendOidc(e: any) {
+    public sendUserData(e: any) {
         //debugger;
         //var oidc = JSON.constructor(this.props.oidc)
         var user = JSON.constructor(this.props.user)
@@ -50,18 +50,24 @@ class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: bool
 
         this.unityContent.send(
             "UserNameDisplay",
-            "ReceiveOidc",
-            JSON.stringify(user)
+            "ReceiveUserData",
+            JSON.stringify(this.props.user)
         );
 
     }
 
+    componentDidUpdate(props: any) {
+        if (this.props.isAuthenticated === true) {
+            //debugger;
+        }
+    }
+
     componentDidMount() {
-        window.addEventListener('userDisplayLoaded', this.sendOidc);
+        window.addEventListener('userDisplayLoaded', this.sendUserData);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('userDisplayLoaded', this.sendOidc);
+        window.removeEventListener('userDisplayLoaded', this.sendUserData);
     }
 
 
@@ -70,7 +76,7 @@ class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: bool
     // Finally render the Unity component and pass 
     // the Unity content through the props.
       //debugger;
-      this.sendOidc(this.props); 
+      this.sendUserData(this.props); 
 
     return (
     
