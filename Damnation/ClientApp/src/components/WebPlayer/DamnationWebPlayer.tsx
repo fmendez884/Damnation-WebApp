@@ -1,5 +1,5 @@
 import * as React from "react";
-import { connect } from "react-redux";
+//import { connect } from "react-redux";
 import Unity, { UnityContent } from "react-unity-webgl";
 
 type oidc = {
@@ -15,7 +15,7 @@ interface State {
     userDisplayLoaded: boolean;
 }
 
-class DamnationWebPlayer extends React.Component<{ oidc: oidc }, { userDisplayLoaded: boolean }> {
+class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: boolean }> {
   
   unityContent = new UnityContent(
     "./Build/damnation-rpg-webgl-build.json",
@@ -41,17 +41,17 @@ class DamnationWebPlayer extends React.Component<{ oidc: oidc }, { userDisplayLo
     };
 
     public sendOidc(e: any) {
-
-        var oidc = JSON.constructor(this.props.oidc)
-        var user = JSON.constructor(oidc.user)
-        oidc.user = user
-        var profile = JSON.constructor(oidc.user.profile)
-        oidc.user.profile = profile
+        //debugger;
+        //var oidc = JSON.constructor(this.props.oidc)
+        var user = JSON.constructor(this.props.user)
+        //oidc.user = user
+        var profile = JSON.constructor(this.props.user.profile)
+        user.profile = profile
 
         this.unityContent.send(
             "UserNameDisplay",
             "ReceiveOidc",
-            JSON.stringify(oidc)
+            JSON.stringify(user)
         );
 
     }
@@ -69,8 +69,8 @@ class DamnationWebPlayer extends React.Component<{ oidc: oidc }, { userDisplayLo
 
     // Finally render the Unity component and pass 
     // the Unity content through the props.
-
-      
+      //debugger;
+      this.sendOidc(this.props); 
 
     return (
     
@@ -89,4 +89,5 @@ function mapStateToProps(state: any) {
     };
 };
 
-export default connect(mapStateToProps)(DamnationWebPlayer);
+//export default connect(mapStateToProps)(DamnationWebPlayer);
+export default (DamnationWebPlayer);

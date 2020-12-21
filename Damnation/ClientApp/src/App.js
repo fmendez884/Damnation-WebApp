@@ -1,26 +1,63 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 var React = require("react");
-var react_router_1 = require("react-router");
-var Layout_1 = require("./components/Layout");
-var Home_1 = require("./components/Home");
-var Counter_1 = require("./components/Counter");
-var FetchData_1 = require("./components/FetchData");
-var Items_1 = require("./components/Item/Items");
-var Create_1 = require("./components/Item/Create");
-var PrivateRoute_1 = require("./components/common/PrivateRoute");
-var LoginPage_1 = require("./components/LoginPage");
-var LogoutPage_1 = require("./components/LogoutPage");
-var CallbackPage_1 = require("./components/CallbackPage");
+var react_router_dom_1 = require("react-router-dom");
+var reactstrap_1 = require("reactstrap");
+var AuthProvider_1 = require("./AuthProvider");
+var NavBar_1 = require("./NavBar");
+var ErrorMessage_1 = require("./ErrorMessage");
+var Welcome_1 = require("./Welcome");
+require("bootstrap/dist/css/bootstrap.css");
 require("./App.css");
-exports.default = (function () { return (React.createElement("div", { className: "App" },
-    React.createElement(Layout_1.default, null,
-        React.createElement(react_router_1.Route, { exact: true, path: '/', component: Home_1.default }),
-        React.createElement(react_router_1.Route, { path: '/counter', component: Counter_1.default }),
-        React.createElement(react_router_1.Route, { path: '/items', component: Items_1.default }),
-        React.createElement(react_router_1.Route, { path: '/create', component: Create_1.default }),
-        React.createElement(PrivateRoute_1.default, { path: "/fetch-data/:startDateIndex?", component: FetchData_1.default }),
-        React.createElement(react_router_1.Route, { path: "/login", component: LoginPage_1.default }),
-        React.createElement(react_router_1.Route, { path: "/logout", component: LogoutPage_1.default }),
-        React.createElement(react_router_1.Route, { path: "/callback", component: CallbackPage_1.default })))); });
+var App = /** @class */ (function (_super) {
+    __extends(App, _super);
+    function App() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    App.prototype.render = function () {
+        var _this = this;
+        var error = null;
+        if (this.props.error) {
+            error = React.createElement(ErrorMessage_1.default, { message: this.props.error.message, debug: this.props.error.debug });
+        }
+        // <renderSnippet>
+        return (React.createElement(react_router_dom_1.BrowserRouter, null,
+            React.createElement("div", null,
+                React.createElement(NavBar_1.default, { isAuthenticated: this.props.isAuthenticated, authButtonMethod: this.props.isAuthenticated ? this.props.logout : this.props.login, user: this.props.user }),
+                React.createElement(reactstrap_1.Container, null,
+                    error,
+                    React.createElement(react_router_dom_1.Route, { exact: true, path: "/", render: function (props) {
+                            return React.createElement(Welcome_1.default, __assign({}, props, { isAuthenticated: _this.props.isAuthenticated, user: _this.props.user, authButtonMethod: _this.props.login }));
+                        } })))));
+        // </renderSnippet>
+    };
+    return App;
+}(React.Component));
+exports.default = AuthProvider_1.default(App);
 //# sourceMappingURL=App.js.map

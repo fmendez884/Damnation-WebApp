@@ -3,12 +3,12 @@ import GobletFire from "./GobletFire";
 import GameContainer from "./GameContainer";
 
 
-export default class GameSection extends React.Component {
+export default class GameSection extends React.Component<any> {
     render() {
         return (
             <div className="GameSection">
                 <GobletFire></GobletFire>
-                <GameContainer></GameContainer>
+                <GameContainer {...this.props}></GameContainer>
                 <GobletFire></GobletFire>
             </div>
         );

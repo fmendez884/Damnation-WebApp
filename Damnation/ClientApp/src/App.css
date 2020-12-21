@@ -1,4 +1,4 @@
-﻿body {
+body {
     background-color: black;
     font-family: 'Press Start 2P', cursive;
 }
@@ -24,7 +24,7 @@
 }
 
 .nested-item-container {
-    display:flex;
+    display: flex;
 }
 
 .user-greeting {
