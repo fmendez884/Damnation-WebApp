@@ -28,8 +28,8 @@ var DamnationWebPlayer = /** @class */ (function (_super) {
             userDisplayLoaded: false
         };
         _this.sendUserData = _this.sendUserData.bind(_this);
-        console.log(_this);
         return _this;
+        //console.log(this);
     }
     DamnationWebPlayer.prototype.sendUserData = function (e) {
         //debugger;
@@ -42,7 +42,9 @@ var DamnationWebPlayer = /** @class */ (function (_super) {
     };
     DamnationWebPlayer.prototype.componentDidUpdate = function (props) {
         if (this.props.isAuthenticated === true) {
-            debugger;
+            //debugger;
+            console.log(this.props);
+            console.log(JSON.stringify(this.props.user));
         }
     };
     DamnationWebPlayer.prototype.componentDidMount = function () {

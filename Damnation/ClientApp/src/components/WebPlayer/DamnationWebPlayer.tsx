@@ -59,6 +59,8 @@ class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: bool
     componentDidUpdate(props: any) {
         if (this.props.isAuthenticated === true) {
             //debugger;
+            console.log(this.props);
+            console.log(JSON.stringify(this.props.user))
         }
     }
 

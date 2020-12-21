@@ -29,21 +29,6 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="ClientApp\src\components\TitleSection\TitleSection.tsx" />
-    <None Remove="ClientApp\src\components\UserGreeting.tsx" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Remove="ClientApp\src\components\common\PrivateRoute.tsx" />
-    <TypeScriptCompile Remove="ClientApp\src\components\LoginPage.tsx" />
-    <TypeScriptCompile Remove="ClientApp\src\components\LogoutPage.tsx" />
-    <TypeScriptCompile Remove="ClientApp\src\components\WebPlayer\DamnationWebPlayer.tsx" />
-    <TypeScriptCompile Remove="ClientApp\src\components\WebPlayer\GameContainer.tsx" />
-    <TypeScriptCompile Remove="ClientApp\src\components\WebPlayer\GameSection.tsx" />
-    <TypeScriptCompile Remove="ClientApp\src\components\WebPlayer\GobletFire.tsx" />
-  </ItemGroup>
-
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
