@@ -31,52 +31,7 @@ export async function getUserDetails(accessToken: string) {
 
   return user;
 }
-// </graphServiceSnippet1>
 
-// <getUserWeekCalendarSnippet>
-//export async function getUserWeekCalendar(accessToken: string, timeZone: string, startDate: Moment): Promise<Event[]> {
-//  const client = getAuthenticatedClient(accessToken);
-
-//  // Generate startDateTime and endDateTime query params
-//  // to display a 7-day window
-//  var startDateTime = startDate.format();
-//  var endDateTime = moment(startDate).add(7, 'day').format();
-
-//  // GET /me/calendarview?startDateTime=''&endDateTime=''
-//  // &$select=subject,organizer,start,end
-//  // &$orderby=start/dateTime
-//  // &$top=50
-//  var response: PageCollection = await client
-//    .api('/me/calendarview')
-//    .header("Prefer", `outlook.timezone="${timeZone}"`)
-//    .query({ startDateTime: startDateTime, endDateTime: endDateTime })
-//    .select('subject,organizer,start,end')
-//    .orderby('start/dateTime')
-//    .top(50)
-//    .get();
-
-//  if (response["@odata.nextLink"]) {
-//    // Presence of the nextLink property indicates more results are available
-//    // Use a page iterator to get all results
-//    var events: Event[] = [];
-
-//    var pageIterator = new PageIterator(client, response, (event) => {
-//      events.push(event);
-//      return true;
-//    });
-
-//    await pageIterator.iterate();
-
-//    return events;
-//  } else {
-
-//    return response.value;
-//  }
-
-//}
-// </getUserWeekCalendarSnippet>
-
-// <createEventSnippet>
 export async function createEvent(accessToken: string, newEvent: Event): Promise<Event> {
   const client = getAuthenticatedClient(accessToken);
 

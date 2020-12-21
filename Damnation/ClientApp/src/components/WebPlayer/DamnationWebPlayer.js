@@ -28,36 +28,31 @@ var DamnationWebPlayer = /** @class */ (function (_super) {
             userDisplayLoaded: false
         };
         _this.sendUserData = _this.sendUserData.bind(_this);
+        _this.handleEvent = _this.handleEvent.bind(_this);
         return _this;
-        //console.log(this);
     }
-    DamnationWebPlayer.prototype.sendUserData = function (e) {
-        //debugger;
-        //var oidc = JSON.constructor(this.props.oidc)
+    DamnationWebPlayer.prototype.sendUserData = function () {
         var user = JSON.constructor(this.props.user);
-        //oidc.user = user
-        var profile = JSON.constructor(this.props.user.profile);
-        user.profile = profile;
-        this.unityContent.send("UserNameDisplay", "ReceiveUserData", JSON.stringify(this.props.user));
+        this.unityContent.send("UserNameDisplay", "ReceiveUserData", JSON.stringify(user));
     };
+    DamnationWebPlayer.prototype.handleEvent = function (e) {
+        this.setState({ userDisplayLoaded: true });
+    };
+    ;
     DamnationWebPlayer.prototype.componentDidUpdate = function (props) {
-        if (this.props.isAuthenticated === true) {
-            //debugger;
-            console.log(this.props);
-            console.log(JSON.stringify(this.props.user));
+        if (this.props.isAuthenticated === true && this.state.userDisplayLoaded) {
+            this.sendUserData();
         }
     };
     DamnationWebPlayer.prototype.componentDidMount = function () {
-        window.addEventListener('userDisplayLoaded', this.sendUserData);
+        window.addEventListener('userDisplayLoaded', this.handleEvent);
     };
     DamnationWebPlayer.prototype.componentWillUnmount = function () {
-        window.removeEventListener('userDisplayLoaded', this.sendUserData);
+        window.removeEventListener('userDisplayLoaded', this.handleEvent);
     };
     DamnationWebPlayer.prototype.render = function () {
         // Finally render the Unity component and pass 
         // the Unity content through the props.
-        //debugger;
-        this.sendUserData(this.props);
         return (React.createElement("div", { className: "WebPlayer", style: { width: this.webPlayerWidth } }, React.createElement(react_unity_webgl_1.default, { unityContent: this.unityContent })));
     };
     return DamnationWebPlayer;
@@ -68,6 +63,5 @@ function mapStateToProps(state) {
     };
 }
 ;
-//export default connect(mapStateToProps)(DamnationWebPlayer);
 exports.default = (DamnationWebPlayer);
 //# sourceMappingURL=DamnationWebPlayer.js.map

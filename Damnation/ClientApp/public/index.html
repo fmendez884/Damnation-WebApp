@@ -25,7 +25,7 @@
 
     <script src="./Build/UnityLoader.js"></script>
     <script type="text/javascript">
-        window.UserDisplayLoaded = function () { const event = new Event('userDisplayLoaded'); console.log("user display loaded"); window.dispatchEvent(event); };
+        window.UserDisplayLoaded = function () { const event = new Event('userDisplayLoaded'); window.dispatchEvent(event); };
     </script>
     <script>
         var unityInstance = UnityLoader.instantiate("unityContainer", "Build/damnation-rpg-webgl-build.json");

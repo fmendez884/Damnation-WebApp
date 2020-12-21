@@ -33,43 +33,44 @@ class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: bool
   constructor(props: any) {
     super(props);
       this.sendUserData = this.sendUserData.bind(this);
-      //console.log(this);
+      this.handleEvent = this.handleEvent.bind(this);
+     
     }
 
     public state = {
         userDisplayLoaded: false
     };
 
-    public sendUserData(e: any) {
-        //debugger;
-        //var oidc = JSON.constructor(this.props.oidc)
+    public sendUserData() {
         var user = JSON.constructor(this.props.user)
-        //oidc.user = user
-        var profile = JSON.constructor(this.props.user.profile)
-        user.profile = profile
-
+       
         this.unityContent.send(
             "UserNameDisplay",
             "ReceiveUserData",
-            JSON.stringify(this.props.user)
+            JSON.stringify(user)
         );
 
     }
 
+    public handleEvent(e: any) {
+        this.setState({ userDisplayLoaded: true });
+    };
+
     componentDidUpdate(props: any) {
-        if (this.props.isAuthenticated === true) {
-            //debugger;
-            console.log(this.props);
-            console.log(JSON.stringify(this.props.user))
+        if (this.props.isAuthenticated === true && this.state.userDisplayLoaded) {
+         
+            this.sendUserData();
         }
+
+
     }
 
     componentDidMount() {
-        window.addEventListener('userDisplayLoaded', this.sendUserData);
+        window.addEventListener('userDisplayLoaded', this.handleEvent);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('userDisplayLoaded', this.sendUserData);
+        window.removeEventListener('userDisplayLoaded', this.handleEvent);
     }
 
 
@@ -77,8 +78,6 @@ class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: bool
 
     // Finally render the Unity component and pass 
     // the Unity content through the props.
-      //debugger;
-      this.sendUserData(this.props); 
 
     return (
     
@@ -97,5 +96,4 @@ function mapStateToProps(state: any) {
     };
 };
 
-//export default connect(mapStateToProps)(DamnationWebPlayer);
 export default (DamnationWebPlayer);
