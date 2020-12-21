@@ -1,6 +1,4 @@
 "use strict";
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -80,15 +78,10 @@ function createEvent(accessToken, newEvent) {
                     return [4 /*yield*/, client
                             .api('/me/events')
                             .post(newEvent)];
-                case 1: 
-                // POST /me/events
-                // JSON representation of the new event is sent in the
-                // request body
-                return [2 /*return*/, _a.sent()];
+                case 1: return [2 /*return*/, _a.sent()];
             }
         });
     });
 }
 exports.createEvent = createEvent;
-// </createEventSnippet>
 //# sourceMappingURL=GraphService.js.map

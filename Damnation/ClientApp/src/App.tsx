@@ -1,5 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
@@ -19,7 +17,6 @@ class App extends React.Component<AuthComponentProps> {
         debug={this.props.error.debug} />;
     }
 
-    // <renderSnippet>
       return (
       <Router>
         <div>
@@ -41,7 +38,6 @@ class App extends React.Component<AuthComponentProps> {
         </div>
       </Router>
     );
-    // </renderSnippet>
   }
 }
 

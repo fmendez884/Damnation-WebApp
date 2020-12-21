@@ -60,8 +60,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
 var React = require("react");
 var msal_browser_1 = require("@azure/msal-browser");
 var Config_1 = require("./Config");
@@ -80,7 +78,6 @@ function withAuthProvider(WrappedComponent) {
             _this.publicClientApplication = new msal_browser_1.PublicClientApplication({
                 auth: {
                     clientId: Config_1.config.appId
-                    //redirectUri: config.redirectUri
                 },
                 cache: {
                     cacheLocation: "sessionStorage",
@@ -109,13 +106,11 @@ function withAuthProvider(WrappedComponent) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 3, , 4]);
-                            // Login via popup
                             return [4 /*yield*/, this.publicClientApplication.loginPopup({
                                     scopes: Config_1.config.scopes,
                                     prompt: "select_account"
                                 })];
                         case 1:
-                            // Login via popup
                             _a.sent();
                             // After login, get the user's profile
                             return [4 /*yield*/, this.getUserProfile()];
@@ -175,7 +170,6 @@ function withAuthProvider(WrappedComponent) {
                 });
             });
         };
-        // <getUserProfileSnippet>
         class_1.prototype.getUserProfile = function () {
             return __awaiter(this, void 0, void 0, function () {
                 var accessToken, user, err_3;
@@ -215,7 +209,6 @@ function withAuthProvider(WrappedComponent) {
                 });
             });
         };
-        // </getUserProfileSnippet>
         class_1.prototype.setErrorMessage = function (message, debug) {
             this.setState({
                 error: { message: message, debug: debug }

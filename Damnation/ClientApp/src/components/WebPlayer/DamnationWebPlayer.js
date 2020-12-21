@@ -14,7 +14,6 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-//import { connect } from "react-redux";
 var react_unity_webgl_1 = require("react-unity-webgl");
 var DamnationWebPlayer = /** @class */ (function (_super) {
     __extends(DamnationWebPlayer, _super);
@@ -51,8 +50,6 @@ var DamnationWebPlayer = /** @class */ (function (_super) {
         window.removeEventListener('userDisplayLoaded', this.handleEvent);
     };
     DamnationWebPlayer.prototype.render = function () {
-        // Finally render the Unity component and pass 
-        // the Unity content through the props.
         return (React.createElement("div", { className: "WebPlayer", style: { width: this.webPlayerWidth } }, React.createElement(react_unity_webgl_1.default, { unityContent: this.unityContent })));
     };
     return DamnationWebPlayer;

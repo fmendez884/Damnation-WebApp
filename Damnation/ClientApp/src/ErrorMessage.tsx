@@ -1,7 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
-
-// <ErrorMessageSnippet>
 import * as React from 'react';
 import { Alert } from 'reactstrap';
 
@@ -24,4 +20,3 @@ export default class ErrorMessage extends React.Component<ErrorMessageProps> {
     );
   }
 }
-// </ErrorMessageSnippet>

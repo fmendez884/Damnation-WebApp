@@ -1,6 +1,4 @@
 "use strict";
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -26,7 +24,6 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// <WelcomeSnippet>
 var React = require("react");
 var reactstrap_1 = require("reactstrap");
 require("@fortawesome/fontawesome-free/css/all.css");
@@ -56,5 +53,4 @@ var Welcome = /** @class */ (function (_super) {
     return Welcome;
 }(React.Component));
 exports.default = Welcome;
-// </WelcomeSnippet>
 //# sourceMappingURL=Welcome.js.map

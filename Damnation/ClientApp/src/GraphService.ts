@@ -1,8 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
-
-// <graphServiceSnippet1>
-//import moment, { Moment } from 'moment';
 import { Event } from 'microsoft-graph';
 import { PageCollection, PageIterator } from '@microsoft/microsoft-graph-client';
 
@@ -34,12 +29,7 @@ export async function getUserDetails(accessToken: string) {
 
 export async function createEvent(accessToken: string, newEvent: Event): Promise<Event> {
   const client = getAuthenticatedClient(accessToken);
-
-  // POST /me/events
-  // JSON representation of the new event is sent in the
-  // request body
   return await client
     .api('/me/events')
     .post(newEvent);
 }
-// </createEventSnippet>

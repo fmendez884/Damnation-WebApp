@@ -25,7 +25,6 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-//import { connect } from "react-redux";
 var DamnationWebPlayer_1 = require("./DamnationWebPlayer");
 var GameContainer = /** @class */ (function (_super) {
     __extends(GameContainer, _super);

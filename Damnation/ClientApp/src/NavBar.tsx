@@ -1,7 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
-
-// <NavBarSnippet>
 import * as React from 'react';
 import { NavLink as RouterNavLink } from 'react-router-dom';
 import {

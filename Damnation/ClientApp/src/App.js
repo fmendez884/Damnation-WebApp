@@ -24,8 +24,6 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
 var React = require("react");
 var react_router_dom_1 = require("react-router-dom");
 var reactstrap_1 = require("reactstrap");
@@ -46,7 +44,6 @@ var App = /** @class */ (function (_super) {
         if (this.props.error) {
             error = React.createElement(ErrorMessage_1.default, { message: this.props.error.message, debug: this.props.error.debug });
         }
-        // <renderSnippet>
         return (React.createElement(react_router_dom_1.BrowserRouter, null,
             React.createElement("div", null,
                 React.createElement(NavBar_1.default, { isAuthenticated: this.props.isAuthenticated, authButtonMethod: this.props.isAuthenticated ? this.props.logout : this.props.login, user: this.props.user }),
@@ -55,7 +52,6 @@ var App = /** @class */ (function (_super) {
                     React.createElement(react_router_dom_1.Route, { exact: true, path: "/", render: function (props) {
                             return React.createElement(Welcome_1.default, __assign({}, props, { isAuthenticated: _this.props.isAuthenticated, user: _this.props.user, authButtonMethod: _this.props.login }));
                         } })))));
-        // </renderSnippet>
     };
     return App;
 }(React.Component));

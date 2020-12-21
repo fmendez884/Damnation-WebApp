@@ -14,23 +14,17 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var reactstrap_1 = require("reactstrap");
-var ErrorMessage = /** @class */ (function (_super) {
-    __extends(ErrorMessage, _super);
-    function ErrorMessage() {
+var goblet_fire_gif_1 = require("../images/goblet-fire.gif");
+var GobletFire = /** @class */ (function (_super) {
+    __extends(GobletFire, _super);
+    function GobletFire() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ErrorMessage.prototype.render = function () {
-        var debug = null;
-        if (this.props.debug) {
-            debug = React.createElement("pre", { className: "alert-pre border bg-light p-2" },
-                React.createElement("code", null, this.props.debug));
-        }
-        return (React.createElement(reactstrap_1.Alert, { color: "danger" },
-            React.createElement("p", { className: "mb-3" }, this.props.message),
-            debug));
+    GobletFire.prototype.render = function () {
+        return (React.createElement("div", null,
+            React.createElement("img", { className: "gobletFireImage", src: goblet_fire_gif_1.default })));
     };
-    return ErrorMessage;
+    return GobletFire;
 }(React.Component));
-exports.default = ErrorMessage;
-//# sourceMappingURL=ErrorMessage.js.map
+exports.default = GobletFire;
+//# sourceMappingURL=GobletFire.js.map

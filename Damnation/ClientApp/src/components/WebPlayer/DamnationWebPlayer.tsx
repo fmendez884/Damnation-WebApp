@@ -1,5 +1,4 @@
 import * as React from "react";
-//import { connect } from "react-redux";
 import Unity, { UnityContent } from "react-unity-webgl";
 
 type oidc = {
@@ -75,9 +74,6 @@ class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: bool
 
 
   render() {
-
-    // Finally render the Unity component and pass 
-    // the Unity content through the props.
 
     return (
     

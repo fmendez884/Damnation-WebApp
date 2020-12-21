@@ -1,7 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
-
-// <WelcomeSnippet>
 import * as React from 'react';
 import {
   Button,
@@ -49,4 +45,3 @@ export default class Welcome extends React.Component<WelcomeProps, WelcomeState>
     );
   }
 }
-// </WelcomeSnippet>

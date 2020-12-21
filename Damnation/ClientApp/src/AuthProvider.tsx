@@ -1,5 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
 import * as React from 'react';
 import { PublicClientApplication } from '@azure/msal-browser';
 
@@ -39,7 +37,6 @@ export default function withAuthProvider<T extends React.Component<AuthComponent
       this.publicClientApplication = new PublicClientApplication({
         auth: {
           clientId: config.appId
-          //redirectUri: config.redirectUri
         },
         cache: {
           cacheLocation: "sessionStorage",
@@ -73,7 +70,6 @@ export default function withAuthProvider<T extends React.Component<AuthComponent
 
     async login() {
       try {
-        // Login via popup
         await this.publicClientApplication.loginPopup(
           {
             scopes: config.scopes,
@@ -129,7 +125,6 @@ export default function withAuthProvider<T extends React.Component<AuthComponent
       }
     }
 
-    // <getUserProfileSnippet>
     async getUserProfile() {
       try {
         var accessToken = await this.getAccessToken(config.scopes);
@@ -157,7 +152,6 @@ export default function withAuthProvider<T extends React.Component<AuthComponent
         });
       }
     }
-    // </getUserProfileSnippet>
 
     setErrorMessage(message: string, debug: string) {
       this.setState({

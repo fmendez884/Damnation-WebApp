@@ -1,6 +1,4 @@
 "use strict";
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -15,7 +13,6 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-// <NavBarSnippet>
 var React = require("react");
 var react_router_dom_1 = require("react-router-dom");
 var reactstrap_1 = require("reactstrap");
