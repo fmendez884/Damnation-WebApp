@@ -14,7 +14,6 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var goblet_fire_gif_1 = require("../images/goblet-fire.gif");
 var GobletFire = /** @class */ (function (_super) {
     __extends(GobletFire, _super);
     function GobletFire() {
@@ -22,7 +21,7 @@ var GobletFire = /** @class */ (function (_super) {
     }
     GobletFire.prototype.render = function () {
         return (React.createElement("div", null,
-            React.createElement("img", { className: "gobletFireImage", src: goblet_fire_gif_1.default })));
+            React.createElement("img", { className: "gobletFireImage", src: "/static/media/goblet-fire.8c8fc372.gif", alt: "/static/media/goblet-fire.8c8fc372.gif" })));
     };
     return GobletFire;
 }(React.Component));

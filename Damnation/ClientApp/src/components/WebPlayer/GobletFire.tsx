@@ -1,13 +1,10 @@
 import * as React from "react";
-import * as ReactDom from "react-dom";
-
-import gobletFire from "../images/goblet-fire.gif";
 
 export default class GobletFire extends React.Component {
     render() {
         return (
             <div>
-                <img className="gobletFireImage" src={gobletFire}></img>
+                <img className="gobletFireImage" src="/static/media/goblet-fire.8c8fc372.gif" alt="/static/media/goblet-fire.8c8fc372.gif"></img>
             </div>
         );
     }
