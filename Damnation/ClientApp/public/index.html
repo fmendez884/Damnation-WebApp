@@ -25,11 +25,18 @@
 
     <script src="./Build/UnityLoader.js"></script>
     <script type="text/javascript">
-        window.UserDisplayLoaded = function () { const event = new Event('userDisplayLoaded'); window.dispatchEvent(event); };
+        window.ReceiveLeaderBoardData = function (string) {
+            const postToLeaderBoard = new CustomEvent('postToLeaderBoard', {
+                'detail': {
+                    'dataString': string
+                }
+            }); window.dispatchEvent(postToLeaderBoard);
+        };
     </script>
-    <script>
-        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/damnation-rpg-webgl-build.json");
+    <script type="text/javascript">
+        window.UserDisplayLoaded = function () { const userDisplayLoaded = new Event('userDisplayLoaded'); window.dispatchEvent(userDisplayLoaded); };
     </script>
+
     <title>-Damnation-</title>
 </head>
   <body>

@@ -8,11 +8,11 @@
     using System.Net;
 
     [Route("api/[controller]")]
-    public class ItemsController : Controller
+    public class LeaderBoardsController : Controller
     {
 
         private readonly ICosmosDbService _cosmosDbService;
-        public ItemsController(ICosmosDbService cosmosDbService)
+        public LeaderBoardsController(ICosmosDbService cosmosDbService)
         {
             _cosmosDbService = cosmosDbService;
         }
@@ -41,7 +41,7 @@
         [HttpPost("Create")]
         [ActionName("Create")]
         //[ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateAsync([FromBody] Item item)
+        public async Task<ActionResult> CreateAsync([FromBody] LeaderBoard item)
         {
             if (ModelState.IsValid)
             {
@@ -55,7 +55,7 @@
         [HttpPatch("Edit/{id}")]
         [ActionName("Edit")]
         //[ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditAsync([FromBody] Item item)
+        public async Task<ActionResult> EditAsync([FromBody] LeaderBoard item)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +75,7 @@
                 return BadRequest();
             }
 
-            Item item = await _cosmosDbService.GetItemAsync(id);
+            LeaderBoard item = await _cosmosDbService.GetItemAsync(id);
             if (item == null)
             {
                 return NotFound();
@@ -93,7 +93,7 @@
                 return BadRequest();
             }
 
-            Item item = await _cosmosDbService.GetItemAsync(id);
+            LeaderBoard item = await _cosmosDbService.GetItemAsync(id);
             if (item == null)
             {
                 return NotFound();
@@ -111,7 +111,7 @@
             return RedirectToAction("Index");
         }
 
-        
+
 
     }
 

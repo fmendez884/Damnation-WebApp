@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Threading.Tasks;
-using AspNetCore.RouteAnalyzer; // Add
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.StaticFiles;

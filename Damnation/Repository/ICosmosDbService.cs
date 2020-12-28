@@ -7,10 +7,10 @@
 
     public interface ICosmosDbService
     {
-        Task<IEnumerable<Item>> GetItemsAsync(string query);
-        Task<Item> GetItemAsync(string id);
-        Task AddItemAsync(Item item);
-        Task UpdateItemAsync(string id, Item item);
+        Task<IEnumerable<LeaderBoard>> GetItemsAsync(string query);
+        Task<LeaderBoard> GetItemAsync(string id);
+        Task AddItemAsync(LeaderBoard item);
+        Task UpdateItemAsync(string id, LeaderBoard item);
         Task DeleteItemAsync(string id);
 
         //Task<JArray> GetItemsAsync(string collectionName, JArray items);

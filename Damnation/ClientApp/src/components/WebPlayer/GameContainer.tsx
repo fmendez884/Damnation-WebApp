@@ -2,7 +2,6 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 
 import DamnationWebPlayer from "./DamnationWebPlayer";
-import GobletFire from "./GobletFire";
 
 
 class GameContainer extends React.Component<any> {

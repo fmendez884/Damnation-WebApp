@@ -7,6 +7,7 @@ import ErrorMessage from './ErrorMessage';
 import Welcome from './Welcome';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+import LeaderBoards from './components/Item/LeaderBoards';
 
 class App extends React.Component<AuthComponentProps> {
   render() {
@@ -15,7 +16,8 @@ class App extends React.Component<AuthComponentProps> {
       error = <ErrorMessage
         message={this.props.error.message}
         debug={this.props.error.debug} />;
-    }
+      }
+
 
       return (
       <Router>
@@ -33,6 +35,10 @@ class App extends React.Component<AuthComponentProps> {
                   user={this.props.user}
                   authButtonMethod={this.props.login} />
               } />
+            <Route exact path="/leaderboards"
+                render={(props) =>
+                    <LeaderBoards {...props} /> 
+                } />
             
           </Container>
         </div>

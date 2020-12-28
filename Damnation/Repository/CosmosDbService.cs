@@ -20,21 +20,21 @@ namespace Damnation.Repository
             this._container = dbClient.GetContainer(databaseName, containerName);
         }
 
-        public async Task AddItemAsync(Item item)
+        public async Task AddItemAsync(LeaderBoard item)
         {
-            await this._container.CreateItemAsync<Item>(item, new PartitionKey(item.Id));
+            await this._container.CreateItemAsync<LeaderBoard>(item, new PartitionKey(item.Id));
         }
 
         public async Task DeleteItemAsync(string id)
         {
-            await this._container.DeleteItemAsync<Item>(id, new PartitionKey(id));
+            await this._container.DeleteItemAsync<LeaderBoard>(id, new PartitionKey(id));
         }
 
-        public async Task<Item> GetItemAsync(string id)
+        public async Task<LeaderBoard> GetItemAsync(string id)
         {
             try
             {
-                ItemResponse<Item> response = await this._container.ReadItemAsync<Item>(id, new PartitionKey(id));
+                ItemResponse<LeaderBoard> response = await this._container.ReadItemAsync<LeaderBoard>(id, new PartitionKey(id));
                 return response.Resource;
             }
             catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -44,10 +44,10 @@ namespace Damnation.Repository
 
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync(string queryString)
+        public async Task<IEnumerable<LeaderBoard>> GetItemsAsync(string queryString)
         {
-            var query = this._container.GetItemQueryIterator<Item>(new QueryDefinition(queryString));
-            List<Item> results = new List<Item>();
+            var query = this._container.GetItemQueryIterator<LeaderBoard>(new QueryDefinition(queryString));
+            List<LeaderBoard> results = new List<LeaderBoard>();
             while (query.HasMoreResults)
             {
                 var response = await query.ReadNextAsync();
@@ -58,9 +58,9 @@ namespace Damnation.Repository
             return results;
         }
 
-        public async Task UpdateItemAsync(string id, Item item)
+        public async Task UpdateItemAsync(string id, LeaderBoard item)
         {
-            await this._container.UpsertItemAsync<Item>(item, new PartitionKey(id));
+            await this._container.UpsertItemAsync<LeaderBoard>(item, new PartitionKey(id));
         }
     }
 

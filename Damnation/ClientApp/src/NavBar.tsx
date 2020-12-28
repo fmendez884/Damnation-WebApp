@@ -98,8 +98,9 @@ export default class NavBar extends React.Component<NavBarProps, NavBarState> {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="mr-auto" navbar>
                 <NavItem>
-                  <RouterNavLink to="/" className="nav-link" exact>Home</RouterNavLink>
+                    <RouterNavLink to="/leaderboards" className="nav-link" exact>LeaderBoards</RouterNavLink>
                 </NavItem>
+
               </Nav>
               <Nav className="justify-content-end" navbar>
                 
@@ -114,4 +115,3 @@ export default class NavBar extends React.Component<NavBarProps, NavBarState> {
     );
   }
 }
-// </NavBarSnippet>

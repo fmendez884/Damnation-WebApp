@@ -1,5 +1,6 @@
 import * as React from "react";
 import Unity, { UnityContent } from "react-unity-webgl";
+import axios from 'axios';
 
 type oidc = {
     isLoadingUser?: any;
@@ -12,9 +13,10 @@ interface Props {
 
 interface State {
     userDisplayLoaded: boolean;
+    postedToLeaderBoard: boolean;
 }
 
-class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: boolean }> {
+class DamnationWebPlayer extends React.Component< any, State> {
   
   unityContent = new UnityContent(
     "./Build/damnation-rpg-webgl-build.json",
@@ -33,11 +35,13 @@ class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: bool
     super(props);
       this.sendUserData = this.sendUserData.bind(this);
       this.handleEvent = this.handleEvent.bind(this);
+      this.postToLeaderBoard = this.postToLeaderBoard.bind(this);
      
     }
 
     public state = {
-        userDisplayLoaded: false
+        userDisplayLoaded: false,
+        postedToLeaderBoard: false
     };
 
     public sendUserData() {
@@ -51,8 +55,32 @@ class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: bool
 
     }
 
+    public postToLeaderBoard(e: any) {
+
+
+        var parsedString = JSON.parse(e.detail.dataString);
+        var scoreData = parsedString.scoreData;
+        var userData = JSON.parse(parsedString.userData);
+
+
+        var data = {
+            name: userData.displayName,
+            email: userData.email,
+            timeElapsed: scoreData.timeElapsed,
+            remainingHealth: scoreData.remainingHealth,
+            score: scoreData.finalScore
+        }
+
+
+        axios.post("api/LeaderBoards/create", data).then(res => {
+        })
+
+        this.setState({ ...this.state, postedToLeaderBoard: true });
+    }
+
     public handleEvent(e: any) {
         this.setState({ userDisplayLoaded: true });
+       
     };
 
     componentDidUpdate(props: any) {
@@ -64,13 +92,15 @@ class DamnationWebPlayer extends React.Component< any, { userDisplayLoaded: bool
 
     }
 
-    componentDidMount() {
-        window.addEventListener('userDisplayLoaded', this.handleEvent);
-    }
+    //componentDidMount() {
+    //    window.addEventListener('userDisplayLoaded', this.handleEvent);
+    //    window.addEventListener('postToLeaderBoard', this.postToLeaderBoard);
+    //}
 
-    componentWillUnmount() {
-        window.removeEventListener('userDisplayLoaded', this.handleEvent);
-    }
+    //componentWillUnmount() {
+    //    window.removeEventListener('userDisplayLoaded', this.handleEvent);
+    //    window.removeEventListener('postToLeaderBoard', this.postToLeaderBoard);
+    //}
 
 
   render() {
